@@ -241,7 +241,7 @@ class MNERProcessor(DataProcessor):
         return self._create_examples(data, imgs, auxlabels, "test")
 
     def get_labels(self):
-      # return ["O","B-DATETIME","I-DATETIME","B-DATETIME-DATE","I-DATETIME-DATE","I-EVENT-SPORT","B-EVENT-SPORT","B-QUANTITY-NUM","I-QUANTITY-NUM","B-PERSON","I-PERSON","I-IP","B-IP","B-PERSONTYPE","I-PERSONTYPE","B-EVENT-CUL","I-EVENT-CUL","B-LOCATION-GPE","I-LOCATION-GPE","B-LOCATION-STRUC","I-LOCATION-STRUC","X","[CLS]", "[SEP]"]
+        # return ["O","B-DATETIME","I-DATETIME","B-DATETIME-DATE","I-DATETIME-DATE","I-EVENT-SPORT","B-EVENT-SPORT","B-QUANTITY-NUM","I-QUANTITY-NUM","B-PERSON","I-PERSON","I-IP","B-IP","B-PERSONTYPE","I-PERSONTYPE","B-EVENT-CUL","I-EVENT-CUL","B-LOCATION-GPE","I-LOCATION-GPE","B-LOCATION-STRUC","I-LOCATION-STRUC","X","[CLS]", "[SEP]"]
         return ["O",'B-TRANSPORTATION', 'I-TRANSPORTATION', 'B-ORGANIZATION', 'I-ORGANIZATION', 'B-LOCATION', 'I-LOCATION', 'B-DATE', 'I-DATE', "X", "[CLS]", "[SEP]"]
 
     def get_auxlabels(self):
@@ -370,12 +370,8 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
             auxlabel_1 = auxlabellist[i]
             for m in range(len(token)):
                 if m == 0:
-                    # Kiểm tra xem nhãn có nằm trong label_list không
-                    if label_1 not in label_list:
-                        labels.append("O")
-                    else:
-                        labels.append(label_1)
-                        auxlabels.append(auxlabel_1)
+                    labels.append(label_1)
+                    auxlabels.append(auxlabel_1)
                 else:
                     labels.append("X")
                     auxlabels.append("X")
@@ -659,7 +655,6 @@ def main():
 
     processor = processors[task_name]()
     label_list = processor.get_labels()
-    print(label_list)
     auxlabel_list = processor.get_auxlabels()
     num_labels = len(label_list) + 1  # label 0 corresponds to padding, label in label_list starts from 1
 
@@ -693,7 +688,7 @@ def main():
         print('please define your MNER Model')
 
     net = getattr(resnet, 'resnet152')()
-    net.load_state_dict(torch.load(os.path.join(args.resnet_root, '/kaggle/input/model-resnet152-a-ba/resnet152.pth'))) ##thay doi duong dan
+    net.load_state_dict(torch.load(os.path.join(args.resnet_root, 'resnet152.pth')))
     encoder = myResnet(net, args.fine_tune_cnn, device)
 
     if args.fp16:
