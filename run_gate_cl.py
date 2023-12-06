@@ -369,6 +369,7 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
             label_1 = labellist[i]
             print("in1: ",label_1)
             auxlabel_1 = auxlabellist[i]
+            print("dsd: ",auxlabel_1)
             for m in range(len(token)):
                 if m == 0:
                     print("in2: ",label_1)
