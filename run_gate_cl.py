@@ -372,13 +372,11 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
             print("dsd: ",auxlabel_1)
             for m in range(len(token)):
                 if m == 0:
-                    print("in2: ",label_1)
-                    labels.append(label_1)
-                    print("in3: ",labels)
-                    print("in4: ",auxlabel_1)
-
-                    auxlabels.append(auxlabel_1)
-                    print("in5: ",auxlabels)
+                    if label_1 in label_list:
+                        labels.append(label_1)
+                    else:
+                        labels.append("O")
+                    auxlabels.append(auxlabel_1 if auxlabel_1 in auxlabel_list else "O")
                 else:
                     labels.append("X")
                     auxlabels.append("X")
