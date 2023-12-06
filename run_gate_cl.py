@@ -367,16 +367,17 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
             token = tokenizer.tokenize(word)
             tokens.extend(token)
             label_1 = labellist[i]
+            print("in1: ",label_1)
             auxlabel_1 = auxlabellist[i]
             for m in range(len(token)):
                 if m == 0:
-                    print(label_1)
+                    print("in2: ",label_1)
                     labels.append(label_1)
-                    print(labels)
-                    print(auxlabel_1)
+                    print("in3: ",labels)
+                    print("in4: ",auxlabel_1)
 
                     auxlabels.append(auxlabel_1)
-                    print(auxlabels)
+                    print("in5: ",auxlabels)
                 else:
                     labels.append("X")
                     auxlabels.append("X")
