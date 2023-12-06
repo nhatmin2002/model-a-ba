@@ -1,0 +1,65 @@
+IMGID:014970
+Ngày	B-DATETIME-DATE
+24/10	I-DATETIME-DATE
+giải	B-EVENT-SPORT
+cầu	I-EVENT-SPORT
+lông	I-EVENT-SPORT
+Đan	I-EVENT-SPORT
+Mạch	I-EVENT-SPORT
+mở	I-EVENT-SPORT
+rộng	I-EVENT-SPORT
+đã	O
+khép	O
+lại	O
+với	O
+những	O
+trận	O
+chung	O
+kết	O
+ở	O
+5	B-QUANTITY-NUM
+nội	O
+dung	O
+.	O
+Trong	O
+đó	O
+,	O
+trận	O
+đấu	O
+nhận	O
+được	O
+nhiều	O
+sự	O
+quan	O
+tâm	O
+nhất	O
+là	O
+ở	O
+nội	O
+dung	O
+đơn	O
+nam	O
+.	O
+
+IMGID:014971
+Viktor	B-PERSON
+Axelsen	I-PERSON
+vô	O
+địch	O
+giải	B-EVENT-SPORT
+cầu	I-EVENT-SPORT
+lông	I-EVENT-SPORT
+Đan	I-EVENT-SPORT
+Mạch	I-EVENT-SPORT
+mở	I-EVENT-SPORT
+rộng	I-EVENT-SPORT
+
+IMGID:014972
+Anh	B-PERSON
+Quân	I-PERSON
+Hữu	O
+TrườngCập	O
+nhật	O
+00:26	B-DATETIME-TIME
+ngày	I-DATETIME-TIME
+25/10/2021	I-DATETIME-TIME
