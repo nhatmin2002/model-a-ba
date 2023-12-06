@@ -242,7 +242,7 @@ class MNERProcessor(DataProcessor):
 
     def get_labels(self):
       # return ["O","B-DATETIME","I-DATETIME","B-DATETIME-DATE","I-DATETIME-DATE","I-EVENT-SPORT","B-EVENT-SPORT","B-QUANTITY-NUM","I-QUANTITY-NUM","B-PERSON","I-PERSON","I-IP","B-IP","B-PERSONTYPE","I-PERSONTYPE","B-EVENT-CUL","I-EVENT-CUL","B-LOCATION-GPE","I-LOCATION-GPE","B-LOCATION-STRUC","I-LOCATION-STRUC","X","[CLS]", "[SEP]"]
-        return ["O",'B-TRANSPORTATION', 'I-TRANSPORTATION', 'B-ORGANIZATION', 'I-ORGANIZATION', 'B-LOCATION', 'I-LOCATION', 'B-DATE', 'I-DATE',"B-IP","I-IP", "X", "[CLS]", "[SEP]"]
+        return ["O",'B-TRANSPORTATION', 'I-TRANSPORTATION', 'B-ORGANIZATION', 'I-ORGANIZATION', 'B-LOCATION', 'I-LOCATION', 'B-DATE', 'I-DATE',"B-IP","I-IP","B-URL", "X", "[CLS]", "[SEP]"]
 
     def get_auxlabels(self):
         return ["O", "B", "I", "X", "[CLS]", "[SEP]"]
