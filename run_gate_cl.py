@@ -372,9 +372,10 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
                 if m == 0:
                     if label_1 in label_list:
                         labels.append(label_1)
+                        auxlabels.append(auxlabel_1)
                     else:
                         labels.append("O")
-                    auxlabels.append(auxlabel_1 if auxlabel_1 in auxlabel_list else "O")
+                        auxlabels.append("O")
                 else:
                     labels.append("X")
                     auxlabels.append("X")
