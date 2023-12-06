@@ -370,8 +370,12 @@ def convert_mm_examples_to_features(examples, label_list, auxlabel_list, max_seq
             auxlabel_1 = auxlabellist[i]
             for m in range(len(token)):
                 if m == 0:
-                    labels.append(label_1)
-                    auxlabels.append(auxlabel_1)
+                    # Kiểm tra xem nhãn có nằm trong label_list không
+                    if label_1 not in label_list:
+                        labels.append("O")
+                    else:
+                        labels.append(label_1)
+                        auxlabels.append(auxlabel_1)
                 else:
                     labels.append("X")
                     auxlabels.append("X")
