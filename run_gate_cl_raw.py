@@ -693,7 +693,7 @@ def main():
         print('please define your MNER Model')
 
     net = getattr(resnet, 'resnet152')()
-    net.load_state_dict(torch.load(os.path.join(args.resnet_root, 'resnet152.pth')))
+    net.load_state_dict(torch.load(os.path.join(args.resnet_root, '/kaggle/input/model-resnet152-a-ba/resnet152.pth')))
     encoder = myResnet(net, args.fine_tune_cnn, device)
 
     if args.fp16:
