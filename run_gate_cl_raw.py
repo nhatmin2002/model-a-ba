@@ -666,8 +666,8 @@ def main():
     start_label_id = processor.get_start_label_id()
     stop_label_id = processor.get_stop_label_id()
 
-    #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
-    tokenizer=AutoTokenizer.from_pretrained(args.bert_model)
+    tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+    #tokenizer=AutoTokenizer.from_pretrained(args.bert_model)
 
     train_examples = None
     num_train_optimization_steps = None
