@@ -17,6 +17,8 @@ from my_bert.file_utils import PYTORCH_PRETRAINED_BERT_CACHE
 from my_bert.gate_cl_modeling import (CONFIG_NAME, WEIGHTS_NAME, BertConfig, MTCCMBertForMMTokenClassificationCRF)
 from my_bert.optimization import BertAdam, warmup_linear
 from my_bert.tokenization import BertTokenizer
+from transformers import AutoTokenizer
+
 from seqeval.metrics import classification_report
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler,
                               TensorDataset)
@@ -664,7 +666,8 @@ def main():
     start_label_id = processor.get_start_label_id()
     stop_label_id = processor.get_stop_label_id()
 
-    tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+    #tokenizer = BertTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
+    tokenizer=AutoTokenizer.from_pretrained(args.bert_model)
 
     train_examples = None
     num_train_optimization_steps = None
