@@ -1255,7 +1255,7 @@ class MTCCMBertForMMTokenClassificationCRF(BertPreTrainedModel):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.vismap2text = nn.Linear(2048, config.hidden_size)
         self.txt2img_attention = BertCrossEncoder(config, layer_num1)
-        self.crs_classifier = nn.Linear(config.hidden_size * 2 * 512, 2)
+        self.crs_classifier = nn.Linear(config.hidden_size * 2 * 128, 2) #gôc là 512
         self.classifier = nn.Linear(config.hidden_size * 2, num_labels)
         self.crs_loss = nn.CrossEntropyLoss()
         self.crf = CRF(num_labels, batch_first=True)
