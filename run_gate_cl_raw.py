@@ -234,7 +234,7 @@ class MNERProcessor(DataProcessor):
 
     def get_dev_examples(self, data_dir):
         """See base class."""
-        data, imgs, auxlabels = self._read_mmtsv(os.path.join(data_dir, "valid.txt"))
+        data, imgs, auxlabels = self._read_mmtsv(os.path.join(data_dir, "dev.txt"))
         return self._create_examples(data, imgs, auxlabels, "dev")
 
     def get_test_examples(self, data_dir):
@@ -892,7 +892,7 @@ def main():
 
             report = classification_report(y_true, y_pred, digits=4)
             sentence_list = []
-            dev_data, imgs, _ = processor._read_mmtsv(os.path.join(args.data_dir, "valid.txt"))
+            dev_data, imgs, _ = processor._read_mmtsv(os.path.join(args.data_dir, "dev.txt"))
             for i in range(len(y_pred)):
                 sentence = dev_data[i][0]
                 sentence_list.append(sentence)
