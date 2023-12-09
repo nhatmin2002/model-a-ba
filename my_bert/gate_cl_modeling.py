@@ -1360,6 +1360,8 @@ class MTCCMBertForMMTokenClassificationCRF(BertPreTrainedModel):
         if labels is not None:
             cross_output = cross_output_layer_crs
 
+        print("Size of sequence_output before crs_classifier:", sequence_output.size())
+        print("Size of cross_output before crs_classifier:", cross_output.size())
 
         crs_result = self.crs_classifier(
             torch.cat((sequence_output, cross_output), dim=-1).view(sequence_output.shape[0], -1))
