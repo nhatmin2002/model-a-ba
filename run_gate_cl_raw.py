@@ -1038,8 +1038,10 @@ def main():
         print("Location: ", loc_p, loc_r, loc_f1)
         org_f1, org_p, org_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'ORG')
         print("Organization: ", org_p, org_r, org_f1)
-        misc_f1, misc_p, misc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'MISC')
-        print("Miscellaneous: ", misc_p, misc_r, misc_f1)
+        other_f1, other_p, other_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'OTHER')
+        print("OTHER: ", other_p, other_r, other_f1)
+        #misc_f1, misc_p, misc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'MISC')
+        #print("Miscellaneous: ", misc_p, misc_r, misc_f1)
 
         output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
         with open(output_eval_file, "w") as writer:
@@ -1050,7 +1052,9 @@ def main():
             writer.write("Person: " + str(per_p) + ' ' + str(per_r) + ' ' + str(per_f1) + '\n')
             writer.write("Location: " + str(loc_p) + ' ' + str(loc_r) + ' ' + str(loc_f1) + '\n')
             writer.write("Organization: " + str(org_p) + ' ' + str(org_r) + ' ' + str(org_f1) + '\n')
-            writer.write("Miscellaneous: " + str(misc_p) + ' ' + str(misc_r) + ' ' + str(misc_f1) + '\n')
+            writer.write("Other: " + str(other_p) + ' ' + str(other_r) + ' ' + str(other_f1) + '\n')
+
+            #writer.write("Miscellaneous: " + str(misc_p) + ' ' + str(misc_r) + ' ' + str(misc_f1) + '\n')
 
 
 if __name__ == "__main__":
