@@ -234,7 +234,7 @@ class MNERProcessor(DataProcessor):
 
     def get_dev_examples(self, data_dir):
         """See base class."""
-        data, imgs, auxlabels = self._read_mmtsv(os.path.join(data_dir, "dev.txt"))
+        data, imgs, auxlabels = self._read_mmtsv(os.path.join(data_dir, "valid.txt"))
         return self._create_examples(data, imgs, auxlabels, "dev")
 
     def get_test_examples(self, data_dir):
@@ -247,7 +247,7 @@ class MNERProcessor(DataProcessor):
         #return ["O",'B-TRANSPORTATION', 'I-TRANSPORTATION', 'B-ORGANIZATION', 'I-ORGANIZATION', 'B-LOCATION', 'I-LOCATION', 'B-DATE', 'I-DATE', "X", "[CLS]", "[SEP]"]
         #return ['O', 'B-IP', 'I-IP', 'B-URL', 'B-QUANTITY', 'I-QUANTITY', 'B-QUANTITY-NUM', 'I-QUANTITY-NUM', 'B-DATETIME', 'I-DATETIME', 'B-PERSON', 'I-PERSON', 'B-LOCATION-GPE', 'I-LOCATION-GPE', 'B-DATETIME-DURATION', 'I-DATETIME-DURATION', 'B-QUANTITY-AGE', 'I-QUANTITY-AGE', 'B-ORGANIZATION-MED', 'I-ORGANIZATION-MED', 'B-ORGANIZATION', 'I-ORGANIZATION', 'B-QUANTITY-PER', 'I-QUANTITY-PER', 'B-DATETIME-DATERANGE', 'I-DATETIME-DATERANGE', 'B-DATETIME-TIMERANGE', 'I-DATETIME-TIMERANGE', 'B-PERSONTYPE', 'I-PERSONTYPE', 'B-DATETIME-DATE', 'I-DATETIME-DATE', 'B-QUANTITY-ORD', 'I-QUANTITY-ORD', 'I-URL', 'B-PRODUCT', 'B-LOCATION-STRUC', 'I-LOCATION-STRUC', 'B-QUANTITY-DIM', 'I-QUANTITY-DIM', 'B-LOCATION', 'B-PRODUCT-COM', 'I-PRODUCT-COM', 'B-PRODUCT-LEGAL', 'I-PRODUCT-LEGAL', 'B-LOCATION-GEO', 'I-LOCATION-GEO', 'B-EVENT', 'I-EVENT', 'I-PRODUCT', 'B-QUANTITY-CUR', 'I-QUANTITY-CUR', 'B-EVENT-CUL', 'I-EVENT-CUL', 'B-DATETIME-TIME', 'I-DATETIME-TIME', 'I-LOCATION', 'B-PHONENUMBER', 'I-PHONENUMBER', 'B-ORGANIZATION-SPORTS', 'I-ORGANIZATION-SPORTS', 'B-PRODUCT-AWARD', 'I-PRODUCT-AWARD', 'B-EVENT-SPORT', 'I-EVENT-SPORT', 'B-ORGANIZATION-STOCK', 'B-QUANTITY-TEM', 'I-QUANTITY-TEM', 'B-EVENT-NATURAL', 'I-EVENT-NATURAL', 'B-SKILL', 'I-SKILL', 'B-DATETIME-SET', 'I-DATETIME-SET', 'B-ADDRESS', 'I-ADDRESS', 'B-EVENT-GAMESHOW', 'I-EVENT-GAMESHOW', 'B-MISCELLANEOUS', 'I-MISCELLANEOUS', 'B-EMAIL', 'I-EMAIL', 'I-ORGANIZATION-STOCK', 'X', '[CLS]', '[SEP]']
         #return ['I-ADDRESS','A','B', 'I-PERSON', 'B-DATETIME-TIME', 'B-QUANTITY-TEM', 'I-LOCATION-GPE', 'I-PHONENUMBER', 'B-EVENT', 'I-PRODUCT-AWARD', 'I-EMAIL', 'B-EVENT-SPORT', 'B-QUANTITY-DIM', 'I-DATETIME-DATE', 'I-DATETIME-DURATION', 'I-DATETIME-SET', 'I-QUANTITY', 'B-DATETIME-TIMERANGE', 'I-EVENT-NATURAL', 'I-QUANTITY-AGE', 'B-EVENT-CUL', 'B-LOCATION-GPE-GEO', 'I-QUANTITY-CUR', 'I-QUANTITY-NUM', 'I-EVENT', 'I-ORGANIZATION-SPORTS', 'O', 'B-SKILL', 'B-LOCATION', 'B-QUANTITY-NUM', 'I-LOCATION-STRUC', 'B-EMAIL', 'I-MISCELLANEOUS', 'I-QUANTITY-TEM', 'I-LOCATION-GEO', 'I-ORGANIZATION', 'B-QUANTITY', 'I-URL', 'I-LOCATION-GPE-GEO', 'B-ORGANIZATION-SPORTS', 'B-ADDRESS', 'I-DATETIME-TIMERANGE', 'I-SKILL', 'B-QUANTITY-PER', 'B-QUANTITY-AGE', 'I-PRODUCT-LEGAL', 'I-DATETIME-TIME', 'I-PRODUCT-COM', 'B-DATETIME-DATERANGE', 'B-ORGANIZATION-MED', 'I-PERSONTYPE', 'B-ORGANIZATION', 'B-DATETIME-SET', 'B-EVENT-NATURAL', 'I-EVENT-CUL', 'I-QUANTITY-DIM', 'I-ORGANIZATION-MED', 'B-DATETIME', 'I-PRODUCT', 'I-QUANTITY-PER', 'B-PRODUCT-LEGAL', 'B-LOCATION-GPE', 'B-PERSON', 'I-EVENT-GAMESHOW', 'I-DATETIME', 'I-QUANTITY-ORD', 'B-PRODUCT', 'B-URL', 'B-DATETIME-DATE', 'B-PRODUCT-COM', 'B-MISCELLANEOUS', 'B-PHONENUMBER', 'B-LOCATION-GEO', 'B-PRODUCT-AWARD', 'I-ORGANIZATION-STOCK', 'B-QUANTITY-ORD', 'I-DATETIME-DATERANGE', 'B-PERSONTYPE', 'B-DATETIME-DURATION', 'B-IP', 'B-QUANTITY-CUR', 'I-EVENT-SPORT', 'I-IP', 'I-LOCATION', 'B-LOCATION-STRUC', 'B-ORGANIZATION-STOCK', 'B-EVENT-GAMESHOW', "X", "[CLS]", "[SEP]"]
-        return ['B-LOC', 'I-ORG', 'O', 'B-ORG', 'I-PER', 'I-LOC', 'B-PER', 'I-OTHER', 'B-OTHER',"X","[CLS]", "[SEP]"]
+        return ['I-DATE', 'B-LOCATION', 'B-TRANSPORTATION', 'O', 'I-ORGANIZATION', 'B-DATE', 'B-ORGANIZATION', 'I-LOCATION', 'I-TRANSPORTATION',"X","[CLS]", "[SEP]"]
     def get_auxlabels(self):
         return ["O", "B", "I", "X", "[CLS]", "[SEP]"]
 
@@ -1032,16 +1032,16 @@ def main():
         reverse_label_map = {label: i for i, label in enumerate(label_list, 1)}
         acc, f1, p, r = evaluate(y_pred_idx, y_true_idx, sentence_list, reverse_label_map)
         print("Overall: ", p, r, f1)
-        per_f1, per_p, per_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'PER')
-        print("Person: ", per_p, per_r, per_f1)
-        loc_f1, loc_p, loc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'LOC')
+        per_f1, per_p, per_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'DATE')
+        print("Date: ", per_p, per_r, per_f1)
+        loc_f1, loc_p, loc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'LOCATION')
         print("Location: ", loc_p, loc_r, loc_f1)
-        org_f1, org_p, org_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'ORG')
+        org_f1, org_p, org_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'ORGANIZATION')
         print("Organization: ", org_p, org_r, org_f1)
-        other_f1, other_p, other_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'OTHER')
-        print("OTHER: ", other_p, other_r, other_f1)
-        #misc_f1, misc_p, misc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'MISC')
-        #print("Miscellaneous: ", misc_p, misc_r, misc_f1)
+        misc_f1, misc_p, misc_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'TRANSPORTATION')
+        print("TRANSPORTATION: ", misc_p, misc_r, misc_f1)
+        #other_f1, other_p, other_r = evaluate_each_class(y_pred_idx, y_true_idx, sentence_list, reverse_label_map, 'OTHER')
+        #print("OTHER: ", other_p, other_r, other_f1)
 
         output_eval_file = os.path.join(args.output_dir, "eval_results.txt")
         with open(output_eval_file, "w") as writer:
@@ -1049,12 +1049,12 @@ def main():
             logger.info("\n%s", report)
             writer.write(report)
             writer.write("Overall: " + str(p) + ' ' + str(r) + ' ' + str(f1) + '\n')
-            writer.write("Person: " + str(per_p) + ' ' + str(per_r) + ' ' + str(per_f1) + '\n')
+            writer.write("Date: " + str(per_p) + ' ' + str(per_r) + ' ' + str(per_f1) + '\n')
             writer.write("Location: " + str(loc_p) + ' ' + str(loc_r) + ' ' + str(loc_f1) + '\n')
             writer.write("Organization: " + str(org_p) + ' ' + str(org_r) + ' ' + str(org_f1) + '\n')
-            writer.write("Other: " + str(other_p) + ' ' + str(other_r) + ' ' + str(other_f1) + '\n')
+           # writer.write("Other: " + str(other_p) + ' ' + str(other_r) + ' ' + str(other_f1) + '\n')
 
-            #writer.write("Miscellaneous: " + str(misc_p) + ' ' + str(misc_r) + ' ' + str(misc_f1) + '\n')
+            writer.write("TRANSPORTATION: " + str(misc_p) + ' ' + str(misc_r) + ' ' + str(misc_f1) + '\n')
 
 
 if __name__ == "__main__":
